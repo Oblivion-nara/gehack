@@ -200,6 +200,7 @@ _:-ms-input-placeholder, :root .demo-graph {
 
 /* End of template styles */
 
+/* Login popup */
 #login-background {
   position: absolute;
   top: 0;
@@ -228,8 +229,42 @@ _:-ms-input-placeholder, :root .demo-graph {
   margin-top: 1rem;
 }
 
-#sign-up-link {
-  margin-top: 2rem;
+/* Panels */
+.flex-center-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#balance {
+  padding: 1.5rem;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+#balance > div {
+  margin: 0 0.5rem;
+}
+
+#transactions-page {
+  padding: 16px;
+}
+
+.flex-center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#transactions-page > .mdl-list > .mdl-list__item {
   width: 100%;
-  text-align: center;
+  margin: 0.3rem 0;
+}
+
+#transactions-page > ul > li > span > div{
+  margin: 0 1rem;
+}
+
+#transactions-page > ul > li > span > :nth-child(2) {
+  flex-grow: 10;
 }

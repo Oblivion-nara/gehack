@@ -97,25 +97,23 @@
 
       <!-- Main content -->
       <main class="mdl-layout__content mdl-color--grey-100">
-        <div class="mdl-grid demo-content">
-          <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-              <use xlink:href="#piechart" mask="url(#piemask)" />
-              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan font-size="0.2" dy="-0.07">%</tspan></text>
-            </svg>
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-              <use xlink:href="#piechart" mask="url(#piemask)" />
-              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-            </svg>
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-              <use xlink:href="#piechart" mask="url(#piemask)" />
-              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-            </svg>
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-              <use xlink:href="#piechart" mask="url(#piemask)" />
-              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-            </svg>
+
+        <!-- Home page -->
+        <div id="home-page" class="mdl-grid demo-content">
+
+          <!-- Current balance -->
+          <div id="balance" class="mdl-color-text--grey-600 mdl- mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid flex-center-row">
+            <div>Balance: £541</div>
+            <div class="flex-center-row mdl-color-text--green">
+              <i class="material-icons">arrow_upward</i>
+              <div>£200</div>
+            </div>
+            <div class="flex-center-row mdl-color-text--red">
+              <i class="material-icons">arrow_downward</i>
+              <div>£200</div>
+            </div>
           </div>
+
           <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
             <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
               <use xlink:href="#chart" />
@@ -175,9 +173,30 @@
             </div>
           </div>
         </div>
+
+        <!-- Transactions page -->
+        <div id="transactions-page">
+          <ul class="mdl-list flex-center-column">
+            <li class="mdl-list__item mdl-card mdl- mdl-color--white mdl-shadow--2dp flex-center-row">
+              <span class="mdl-list__item-primary-content">
+                <div class="mdl-color-text--grey-600">10/1/17</div>
+                <div class="mdl-color-text--grey-600">Hello world</div>
+                <div class="mdl-color-text--grey-600">+ £200</div>
+                <div class="mdl-color-text--grey-600">£412</div>
+              </span>
+            </li>
+            <li class="mdl-list__item mdl-card mdl- mdl-color--white mdl-shadow--2dpflex-center-row">
+              <span class="mdl-list__item-primary-content">
+                <div class="mdl-color-text--grey-600">10/1/17</div>
+                <div class="mdl-color-text--grey-600">Hello world</div>
+                <div class="mdl-color-text--grey-600">+ £200</div>
+                <div class="mdl-color-text--grey-600">£412</div>
+              </span>
+            </li>
+          </ul>
+        </div>
       </main>
     </div>
-    <!-- End of main page -->
 
     <!-- Login box -->
     <div id="login-background">
