@@ -197,3 +197,39 @@ _:-ms-input-placeholder, :root .demo-graph {
       -ms-flex-align: center;
           align-items: center;
 }
+
+/* End of template styles */
+
+#login-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 10;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-background .mdl-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#login-background .mdl-card .mdl-button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#sign-up-link {
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+}
