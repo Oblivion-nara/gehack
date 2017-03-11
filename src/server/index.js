@@ -15,21 +15,8 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(client, "index.html"));
 });
 
-// Test transaction data
-var transactions = [
-  {
-    "name": "Food",
-    "change": -20,
-    "balance": 412,
-    "date": "10/3/17"
-  },
-  {
-    "name": "Wage",
-    "change": 100,
-    "balance": 512,
-    "date": "11/3/17"
-  }
-]
+// Transaction object
+var transactions = [];
 
 // Serve transaction data
 app.get("/transactionArrays", function(req, res) {
@@ -89,7 +76,18 @@ obp.getHTTPSRequest(
         }
       },
       function(json) {
-        console.log(json);
+        
+        for (i = 0; i < json.transactions.length; i++) {
+          var t = json.transactions[i];
+          transactions.push({
+            "id": t.id,
+            "name": t.details.description,
+            "change": t.details.value.amount,
+            "balance": t.details.new_balance.amount,
+            "date": t.details.completed
+          });
+        }
+
       }
     );
   }

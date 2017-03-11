@@ -55,6 +55,10 @@ if (user && pass) {
 }
 
 // Test post
+getAjax("/transactions", function(data) {
+  console.log(JSON.parse(data));
+});
+
 getAjax("/transactionArrays", function(data) {
     data = JSON.parse(data);
     balance = data.balances;
