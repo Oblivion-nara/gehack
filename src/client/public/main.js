@@ -53,3 +53,8 @@ var pass = getParamByName("pass");
 if (user && pass) {
   byID("login-background").hidden = true;
 }
+
+// Test post
+getAjax("/transactionArrays", function(data) {
+  console.log(data);
+});
