@@ -21,6 +21,11 @@ function getWeek() {
 	return 1000 * 60 * 60 * 24 * 7;
 }
 
+var PreNames = [];
+var PreChanges = [];
+var PreBalences = [];
+var PreDates = [];
+
 function Prediction(names, changes, balances, dates) {
 
 	this.names = names;
@@ -32,25 +37,27 @@ function Prediction(names, changes, balances, dates) {
 }
 
 function getNames(){
-	return names;
+	return PreNames;
 }
 function getChanges(){
-	return changes;
+	return PreChanges;
 }
 function getDates(){
-	return dates;
+	return PreDates;
 }
 function getBalences(){
-	return balances
+	return PreBalences;
 }
 
 //finds regular paments either in or out
+// unfinished function to predict future balances
 function findRegular(names, changes, balances, dates){
 
 	var checked = [];
 	var tempN;
 	var tempC;
 	var tempD;
+	var predictNum = 1;
 	for(var i = 0;i < names.length;i++){
 
 		tempN = [];
@@ -77,7 +84,29 @@ function findRegular(names, changes, balances, dates){
 					break;
 				}
 				tempD.push(dates[position - 1]);
+				var averagedif = 0;
+				for(var y = 0; y < tempD.length;y++){
+					averagedif += new Date(tempD[y]);
+				}
+
+				PreNames.push(names[i]);
+				PreChanges.push(differentValues[j]);
+				PreBalences.push(0);
+				PreDates.push("17/4/"+predictNum);
+
 			}
+		}
+		for(var i = 0;i<PreDates.length;i++){
+			PreNames.push(PreNames[i]);
+			PreChanges.push(differentValues[j]);
+			PreBalences.push(0);
+			PreDates.push("17/5/"+predictNum);
+		}
+		for(var i = 0;i<PreDates.length;i++){
+			PreNames.push(names[i]);
+			PreChanges.push(differentValues[j]);
+			PreBalences.push(0);
+			PreDates.push("17/6/"+predictNum);
 		}
 		checked.push(names[i]);
 
