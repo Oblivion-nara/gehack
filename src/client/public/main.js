@@ -59,6 +59,20 @@ getAjax("/transactions", function(data) {
   console.log(JSON.parse(data));
 });
 
+var transactions = [];
+
+function Transaction(name, value, date) {
+    this.name = name;
+    this.value = value;
+    this.date = date;
+    if (value < 0) {
+        this.tooltip = " "+name+": -£" + Math.abs(value);
+    }
+    else {
+        this.tooltip = " "+name+": -£" + Math.abs(value);
+    }
+}
+
 getAjax("/transactionArrays", function(data) {
     data = JSON.parse(data);
     data.balances.reverse();
@@ -76,6 +90,11 @@ getAjax("/transactionArrays", function(data) {
     for (var i = 0; i < data.dates.length; i++) {
         dates.push(data.dates[i].substr(0, 10));
     }
+
+    for (var i = data.dates.length-1; i > 0; i--) {
+        transactions.push(new Transaction(data.names[i], data.changes[i], dates[i]));
+    }
+
     var oldDate = "";
     var desc = "";
     for (var i = 0; i < data.dates.length; i++) {
@@ -122,6 +141,12 @@ getAjax("/transactionArrays", function(data) {
     document.getElementById('total').innerHTML = bString+".  Transactions in the last month:";
     document.getElementById('up').innerHTML = incomeLastMonth.toString();
     document.getElementById('down').innerHTML = outcomeLastMonth.toString();
+
+    for (var i = 0; i < 3; i++) {
+        document.getElementById('date'+i).innerHTML = transactions[i].date;
+        document.getElementById('name'+i).innerHTML = transactions[i].name;
+        document.getElementById('change'+i).innerHTML = transactions[i].value;
+    }
 
 });
 
