@@ -55,6 +55,6 @@ if (user && pass) {
 }
 
 // Test post
-getAjax("/transactionArrays", function(data) {
+getAjax("/transactions", function(data) {
   console.log(data);
 });

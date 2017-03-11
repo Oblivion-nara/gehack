@@ -53,6 +53,11 @@ app.get("/transactionArrays", function(req, res) {
   }));
 });
 
+app.get("/transactions", function(req, res) {
+  res.setHeader("Content-Type", "application/json");
+  res.send(JSON.stringify(transactions));
+})
+
 app.listen(3000, function() {
   console.log("Example app listening on port 3000!");
 });
