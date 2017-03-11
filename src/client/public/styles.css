@@ -293,36 +293,3 @@ _:-ms-input-placeholder, :root .demo-graph {
 #mini-transactions > .list > div:nth-child(odd) {
   background-color: rgb(245,245,245);
 }
-
-#account-background {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  background-color: rgba(0, 0, 0, 0.5);
-
-  z-index: 10;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#account-background > div {
-  z-index: 20;
-}
-
-#account-background > div > ul > li {
-  cursor: pointer;
-}
-
-#account-background > div > ul > li:hover {
-  background-color: rgb(245,245,245);
-}
-
-#account-background > div > ul > li > span {
-  justify-content: center;
-}
