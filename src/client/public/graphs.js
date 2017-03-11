@@ -72,7 +72,6 @@ var myChart1 = new Chart(ctx1, {
     type: 'line',
     labels: difDataPoints,
     data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [
             {
                 cubicInterpolationMode: 'monotone',
