@@ -82,40 +82,28 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Inbox</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Spam</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
-          <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+          <a class="mdl-navigation__link" onclick="goHome()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" onclick="goTransactions()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">credit_card</i>Transactions</a>
         </nav>
       </div>
 
       <!-- Main content -->
       <main class="mdl-layout__content mdl-color--grey-100">
-        <div class="mdl-grid demo-content">
-          <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-              <use xlink:href="#piechart" mask="url(#piemask)" />
-              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan font-size="0.2" dy="-0.07">%</tspan></text>
-            </svg>
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-              <use xlink:href="#piechart" mask="url(#piemask)" />
-              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-            </svg>
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-              <use xlink:href="#piechart" mask="url(#piemask)" />
-              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-            </svg>
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-              <use xlink:href="#piechart" mask="url(#piemask)" />
-              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-            </svg>
+
+        <!-- Home page -->
+        <div id="home-page" class="mdl-grid demo-content">
+
+          <!-- Current balance -->
+          <div id="balance" class="mdl-color-text--grey-600 mdl- mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid flex-center-row">
+            <div>Balance: £541</div>
+            <div class="flex-center-row mdl-color-text--green">
+              <i class="material-icons">arrow_upward</i>
+              <div>£200</div>
+            </div>
+            <div class="flex-center-row mdl-color-text--red">
+              <i class="material-icons">arrow_downward</i>
+              <div>£200</div>
+            </div>
           </div>
 
           <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
@@ -289,9 +277,30 @@
             </div>
           </div>
         </div>
+
+        <!-- Transactions page -->
+        <div id="transactions-page">
+          <ul class="mdl-list flex-center-column">
+            <li class="mdl-list__item mdl-card mdl- mdl-color--white mdl-shadow--2dp flex-center-row">
+              <span class="mdl-list__item-primary-content">
+                <div class="mdl-color-text--grey-600">10/1/17</div>
+                <div class="mdl-color-text--grey-600">Hello world</div>
+                <div class="mdl-color-text--grey-600">+ £200</div>
+                <div class="mdl-color-text--grey-600">£412</div>
+              </span>
+            </li>
+            <li class="mdl-list__item mdl-card mdl- mdl-color--white mdl-shadow--2dp flex-center-row">
+              <span class="mdl-list__item-primary-content">
+                <div class="mdl-color-text--grey-600">10/1/17</div>
+                <div class="mdl-color-text--grey-600">Hello world</div>
+                <div class="mdl-color-text--grey-600">+ £200</div>
+                <div class="mdl-color-text--grey-600">£412</div>
+              </span>
+            </li>
+          </ul>
+        </div>
       </main>
     </div>
-    <!-- End of main page -->
 
     <!-- Login box -->
     <div id="login-background">
@@ -299,7 +308,7 @@
       <!-- Login dialog -->
       <div id="login-container" class="mdl-card">
         <div class="mdl-card__actions">
-          <form>
+          <form id="login-form">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" id="user">
               <label class="mdl-textfield__label" for="user">User name</label>
@@ -333,5 +342,6 @@
       </defs>
     </svg>
     
+    <script src="main.js"></script>
   </body>
 </html>
