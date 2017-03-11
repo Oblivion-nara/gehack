@@ -10,6 +10,9 @@ byID("login-form").onsubmit = function() {
   var pass = byID("pass").value;
   console.log(user, pass);
 
+  // Hide the login screen
+  byID("login-background").hidden = true;
+
   // Do something with user and pass
 
   // Stops the normal method of submitting
