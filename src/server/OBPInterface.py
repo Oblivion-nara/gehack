@@ -1,12 +1,24 @@
 import requests
 
-class OBJInterface:
+class OBPInterface:
 
     def __init__(self):
-        self.bankID
-        self.accountID
+        self.bankID = -1
+        self.accountID = -1
 
-    def getRequest(uri):
+    def getBankID(self):
+        return self.bankID
+
+    def setBankID(self, bankID):
+        self.bankID = bankID
+
+    def getAccountID(self):
+        return self.accountID
+
+    def setAccountID(self, accountID):
+        self.accountID = accountID
+
+    def getRequest(self, uri):
         r = request.get("https://apisandbox.openbankproject.com/obp/v2.2.0" + uri)
         r.status_code
         r.headers['content-type']
@@ -14,16 +26,17 @@ class OBJInterface:
         r.text
         return r.json()
 
-    def root():
+    def root(self):
         return getRequest("/root")
 
-    def getBanks():
+    def getBanks(self):
         return getRequest("/banks")
 
-    def getBank(self, bankID):
-        self.bankID = bankID
+    def getBankDetails(self):
         return getRequest("/banks/" + bankID)
 
-    def getAccount(self, accountID):
-        self.accountID = accountID
+    def getAccountDetails(self):
         return getRequest("/my/banks/" + self.bankID + "/accounts/" + accountID + "/account")
+
+    def getTransactions(self):
+        getRequest("/my/" + self.bankID + "/rbs/accounts/" + self.accountID + "/transactions")
