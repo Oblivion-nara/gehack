@@ -3,8 +3,14 @@ import requests
 class OBJInterface:
 
     def __init__(self):
-        self.bankID
-        self.accountID
+        self.bankID = -1
+        self.accountID = -1
+
+    def getBankID(self):
+        return self.bankID
+
+    def getAccountID(self):
+        return self.accountID
 
     def getRequest(uri):
         r = request.get("https://apisandbox.openbankproject.com/obp/v2.2.0" + uri)
@@ -27,3 +33,6 @@ class OBJInterface:
     def getAccount(self, accountID):
         self.accountID = accountID
         return getRequest("/my/banks/" + self.bankID + "/accounts/" + accountID + "/account")
+
+    def getTransactions(self):
+        getRequest("/my/" + self.bankID + "/rbs/accounts/" + self.accountID + "/transactions")
