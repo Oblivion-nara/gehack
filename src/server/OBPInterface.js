@@ -1,31 +1,27 @@
+var https = require("https");
+
 var apiurl = "https://apisandbox.openbankproject.com/obp/v2.2.0";
 var bankID = -1;
 var accountID = -1;
 var token = -1;
 
-//login
-function login(){
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        var json = JSON.parse(request.responseText);
-        token = json.token;
-    }
-    request.open("POST", "https://apisandbox.openbankproject.com/my/logins/direct", true);
-    request.setRequestHeader("Authorization","DirectLogin username=\"robert.uk.29@example.com\"\, password=\"d9c663\"\, consumer_key=\"hznak4pyka33m2pn2yq5gr5le0x2itnnsbyht4jp\"");
-    request.setRequestHeader("Content-Type","application/json");
-    request.send(null);
-}
-login();
-//get request
-function getRequest(theUrl){
+function getHTTPSRequest(options, callback) {
+    https.request(
+        options,
+        function(response) {
+            var str = '';
 
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        var json = JSON.parse(request.responseText);
-        token = json.token;
-    }
-    request.open("GET", apiurl + theUrl, true); // true for asynchronous
-    return request;
+            //another chunk of data has been recieved, so append it to `str`
+            response.on('data', function (chunk) {
+                str += chunk;
+            });
+
+            //the whole response has been recieved, so we just print it out here
+            response.on('end', function () {
+                callback(JSON.parse(str));
+            });
+        }
+    ).end();
 }
 
 //post request
@@ -44,4 +40,9 @@ function test(){
         }
     }
     http.send(params);
+}
+
+// Export functions
+module.exports = {
+    getHTTPSRequest: getHTTPSRequest
 }
