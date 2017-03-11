@@ -26,4 +26,4 @@ class OBPInterface:
 
     def getAccount(self, accountID):
         self.accountID = accountID
-        return self.getRequest("/my/banks/" + self.bankID + "/accounts/" + accountID + "/account")
+        return self.getRequest("/my/banks/" + self.bankID + "/accounts/" + accountID + "/account"
