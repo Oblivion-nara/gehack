@@ -55,6 +55,45 @@ if (user && pass) {
 }
 
 // Test post
-getAjax("/transactions", function(data) {
-  console.log(data);
+getAjax("/transactionArrays", function(data) {
+    data = JSON.parse(data);
+    balance = data.balances;
+    myChart.data.datasets[0].data = balance;
+    var oldDate = null;
+    var desc = "";
+    for (var i = 0; i < data.dates.length; i++) {
+        if (i==0) {
+            balanceDif.push(data.changes[i]);
+            desc+=getDesc(data.names[i], data.changes[i]);
+            oldDate = data.dates[i];
+        }
+        else if (oldDate == data.dates[i] && i != data.dates.length-1) {
+            balanceDif[i] += data.changes[i];
+            desc+=getDesc(data.names[i], data.changes[i]);
+        }
+        else {
+            balanceDif.push(data.changes[i]);
+            difDataPoints.push(new DataPoint(desc, balanceDif[i-1], data.dates[i-1]));
+            desc = getDesc(data.names[i], data.changes[i]);
+            oldDate = data.dates[i];
+        }
+        if (i == data.dates.length-1) {
+            difDataPoints.push(new DataPoint(desc, balanceDif[i], data.dates[i]));
+        }
+    }
+
+
+    myChart.data.labels = difDataPoints;
+    myChart1.data.labels = difDataPoints;
+    myChart.update();
+    myChart1.update();
 });
+
+function getDesc(name, value) {
+    if (value < 0) {
+        return (" "+name+": -£" + Math.abs(value)+",");
+    }
+    else {
+        return (" "+name+": £" + Math.abs(value)+",");
+    }
+}
