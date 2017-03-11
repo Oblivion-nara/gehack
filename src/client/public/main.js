@@ -55,6 +55,19 @@ if (user && pass) {
 }
 
 // Test post
-getAjax("/transactions", function(data) {
-  console.log(data);
+getAjax("/transactionArrays", function(data) {
+    data = JSON.parse(data);
+    balance = data.balances;
+    balanceDif = data.changes;
+    myChart.data.datasets[0].data = balance;
+    myChart1.data.datasets[0].data = balanceDif;
+    for (var i = 0; i < data.dates.length; i++) {
+        difDataPoints.push(new DataPoint(data.names[i], data.changes[i], data.dates[i]));
+    }
+    myChart.data.labels = difDataPoints;
+    myChart1.data.labels = difDataPoints;
+    console.log(myChart.data.labels);
+    console.log(data.names);
+    myChart.update();
+    myChart1.update();
 });

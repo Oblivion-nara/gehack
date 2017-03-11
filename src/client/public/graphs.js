@@ -1,10 +1,28 @@
 var ctx = document.getElementById("myChart");
-var testData = [101, 59, 80, -90, 56, -30, 40];
+var balance = [0,0];
+
+function DataPoint(name, value, date) {
+    this.name = name;
+    this.value = value;
+    this.date = date;
+    if (value < 0) {
+        this.tooltip = name+": -£" + Math.abs(value);
+    }
+    else {
+        this.tooltip = name+": £" + Math.abs(value);
+    }
+}
+
+DataPoint.prototype.toString = function () {
+    return this.date;
+};
+
+var difDataPoints = [];
 
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: difDataPoints,
         datasets: [
             {
                 cubicInterpolationMode: 'monotone',
@@ -24,7 +42,7 @@ var myChart = new Chart(ctx, {
                 pointHoverBorderWidth: 2,
                 pointRadius: 4,
                 pointHitRadius: 10,
-                data: testData,
+                data: balance,
                 spanGaps: false,
             }
         ]
@@ -35,16 +53,24 @@ var myChart = new Chart(ctx, {
             display: true
         },
         legend: {
-            display: false
+            display: false,
+        },
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem) {
+                    return difDataPoints[tooltipItem.index].tooltip;
+                }
+            }
         }
     }
 });
 
 var ctx1 = document.getElementById("myChart1");
-var testData1 = [10, 39, 8, -90, -29, -30, 40];
+var balanceDif;
 
 var myChart1 = new Chart(ctx1, {
     type: 'line',
+    labels: difDataPoints,
     data: {
         labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [
@@ -66,7 +92,7 @@ var myChart1 = new Chart(ctx1, {
                 pointHoverBorderWidth: 2,
                 pointRadius: 4,
                 pointHitRadius: 10,
-                data: testData1,
+                data: balanceDif,
                 spanGaps: false
             }
         ]
@@ -78,6 +104,13 @@ var myChart1 = new Chart(ctx1, {
         },
         legend: {
             display: false
+        },
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem) {
+                    return difDataPoints[tooltipItem.index].tooltip;
+                }
+            }
         }
     }
 });
