@@ -102,7 +102,7 @@ var myChart1 = new Chart(ctx1, {
     },
     options: {
         title: {
-            text: 'Expenditure',
+            text: 'Income',
             display: true
         },
         legend: {
