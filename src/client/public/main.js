@@ -130,6 +130,12 @@ function makeGraphs(n) {
     myChart1.data.labels = difDataPoints;
     myChart.update();
     myChart1.update();
+
+    // Update transactions
+    byID("transactions-list").innerHTML = "";
+    for (var i = 0; i < 10; i++) {
+        byID("transactions-list").innerHTML += '<li class="mdl-list__item mdl-card mdl- mdl-color--white mdl-shadow--2dp flex-center-row"> <span class="mdl-list__item-primary-content"> <div class="mdl-color-text--grey-600">' + data.dates[i] + '</div> <div class="mdl-color-text--grey-600">' + data.names[i] + '</div> <div class="mdl-color-text--grey-600">+ ' + data.changes[i] + '</div> <div class="mdl-color-text--grey-600">£412</div> <div class="mdl-color-text--grey-600">' + data.balances[i] + '</div> </span> </li>';
+    }
 }
 
 var transactions = [];
