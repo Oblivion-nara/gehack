@@ -14,7 +14,7 @@ byID("login-form").onsubmit = function() {
   byID("login-background").hidden = true;
 
   // Do something with user and pass
-  window.location.replace("/?user=" + user + "&pass=" + pass);
+  window.location.replace("/?user=" + userL + "&pass=" + passL);
 
   // Stops the normal method of submitting
   return false;
