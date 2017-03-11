@@ -56,5 +56,5 @@ if (user && pass) {
 
 // Test post
 getAjax("/transactions", function(data) {
-  console.log(data);
+  console.log(JSON.parse(data));
 });
