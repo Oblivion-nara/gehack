@@ -7,10 +7,15 @@ var token = -1;
 function login(){
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
-        var json = JSON.parse(request.responseText);
-        token = json.token;
+        var text = request.responseText;
+        try {
+            var json = JSON.parse(text);
+            token = json.token;
+        }
+        catch(err) {
+        }
     }
-    request.open("POST", "https://apisandbox.openbankproject.com/my/logins/direct", true);
+    request.open("POST", "https://apisandbox.openbankproject.com/my/logins/direct", true);n   
     request.setRequestHeader("Authorization","DirectLogin username=\"robert.uk.29@example.com\"\, password=\"d9c663\"\, consumer_key=\"hznak4pyka33m2pn2yq5gr5le0x2itnnsbyht4jp\"");
     request.setRequestHeader("Content-Type","application/json");
     request.send(null);
