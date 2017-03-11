@@ -86,7 +86,7 @@ function findRegular(names, changes, balances, dates){
 				tempD.push(dates[position - 1]);
 				var averagedif = 0;
 				for(var y = 0; y < tempD.length;y++){
-					averagedif += new Date(tempD[y]);
+					//averagedif += new Date(tempD[y]);
 				}
 
 				PreNames.push(names[i]);
@@ -98,15 +98,15 @@ function findRegular(names, changes, balances, dates){
 		}
 		for(var i = 0;i<PreDates.length;i++){
 			PreNames.push(PreNames[i]);
-			PreChanges.push(differentValues[j]);
+			PreChanges.push(PreChanges[j]);
 			PreBalences.push(0);
-			PreDates.push("17/5/"+predictNum);
+			PreDates.push("17/5/"+i);
 		}
 		for(var i = 0;i<PreDates.length;i++){
 			PreNames.push(names[i]);
-			PreChanges.push(differentValues[j]);
+			PreChanges.push(PreChanges[j]);
 			PreBalences.push(0);
-			PreDates.push("17/6/"+predictNum);
+			PreDates.push("17/6/"+i);
 		}
 		checked.push(names[i]);
 
@@ -118,7 +118,7 @@ function names(name){
 	return this.equals(name);
 }
 function change(change){
-	return this > (change * 9 / 10) and this < (change * 11 / 10);
+	return this > (change * 9 / 10) && this < (change * 11 / 10);
 }
 function changes(changes){
 
@@ -127,7 +127,7 @@ function changes(changes){
 	for(var i = 0;i<changes.length;i++){
 		var different = true;
 		for(var j = 0; i < difference.length;j++){
-			if(changes[i] > (difference[j] * 9 / 10) and changes[i] < (difference[j] * 11 / 10)){
+			if(changes[i] > (difference[j] * 9 / 10) && changes[i] < (difference[j] * 11 / 10)){
 				different = false;
 				break;
 			}
@@ -138,9 +138,6 @@ function changes(changes){
 		}
 	}
 	return difference;
-}
-function dates(date){
-
 }
 
 /**
