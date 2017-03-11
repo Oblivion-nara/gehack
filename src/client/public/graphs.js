@@ -7,10 +7,12 @@ function DataPoint(desc, value, date) {
     this.value = value;
     this.date = date;
     if (value < 0) {
-        this.tooltip = "Total : -£" + Math.abs(value)+"\n"+desc;
+        var text = " Total: -£" + Math.abs(value)+","+desc;
+        this.tooltip = (text).substr(0, text.length-1);
     }
     else {
-        this.tooltip = "Total : £" + Math.abs(value)+"\n"+desc;
+        var text = " Total: £" + Math.abs(value)+","+desc;
+        this.tooltip = (text).substr(0, text.length-1);
     }
 }
 
@@ -59,7 +61,8 @@ var myChart = new Chart(ctx, {
         tooltips: {
             callbacks: {
                 label: function(tooltipItem) {
-                    return difDataPoints[tooltipItem.index].tooltip;
+                    var t = difDataPoints[tooltipItem.index].tooltip.split(',');
+                    return t;
                 }
             }
         }
@@ -108,7 +111,8 @@ var myChart1 = new Chart(ctx1, {
         tooltips: {
             callbacks: {
                 label: function(tooltipItem) {
-                    return difDataPoints[tooltipItem.index].tooltip;
+                    var t = difDataPoints[tooltipItem.index].tooltip.split(',');
+                    return t;
                 }
             }
         }
