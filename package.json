@@ -1,0 +1,23 @@
+{
+  "name": "gehack",
+  "version": "0.0.1",
+  "description": "",
+  "main": "/src/server/index.js",
+  "scripts": {
+    "start": "node src/server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TauOmicronMu/gehack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TauOmicronMu/gehack/issues"
+  },
+  "homepage": "https://github.com/TauOmicronMu/gehack#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}

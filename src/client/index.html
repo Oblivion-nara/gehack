@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Over-Drawn</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- MDL and Google Font CDNs -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-amber.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <script src="Chart.bundle.min.js"></script>
+
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    
+      <!-- Header bar -->
+      <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Home</span>
+          <div class="mdl-layout-spacer"></div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">About</li>
+            <li class="mdl-menu__item">Contact</li>
+            <li class="mdl-menu__item">Legal information</li>
+          </ul>
+        </div>
+      </header>
+
+      <!-- Side navigation bar -->
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img src="images/user.jpg" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>hello@example.com</span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+              <i class="material-icons" role="presentation">arrow_drop_down</i>
+              <span class="visuallyhidden">Accounts</span>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+              <li class="mdl-menu__item">hello@example.com</li>
+              <li class="mdl-menu__item">info@example.com</li>
+              <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+            </ul>
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" onclick="goHome()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" onclick="goTransactions()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">credit_card</i>Transactions</a>
+        </nav>
+      </div>
+
+      <!-- Main content -->
+      <main class="mdl-layout__content mdl-color--grey-100">
+
+        <!-- Home page -->
+        <div id="home-page" class="mdl-grid demo-content">
+
+          <!-- Current balance -->
+          <div id="balance" class="mdl-color-text--grey-600 mdl- mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid flex-center-row">
+            <div id="total">Balance: £541</div>
+            <div class="flex-center-row mdl-color-text--green">
+              <i class="material-icons">arrow_upward</i>
+              <div id = "up">£200</div>
+            </div>
+            <div class="flex-center-row mdl-color-text--red">
+              <i class="material-icons">arrow_downward</i>
+              <div id = "down">£200</div>
+            </div>
+          </div>
+
+          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+              <canvas id="myChart" width="400" height="200"></canvas>
+              <canvas id="myChart1" width="400" height="200"></canvas>
+          </div>
+
+          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+            
+            <div id="mini-transactions" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">Transactions</h2>
+              </div>
+
+              <div class="mdl-color-text--grey-600 list">
+
+                <div class="flex-center-row">
+                  <div id="date0">10/1/17</div>
+                  <div id="name0">Food</div>
+                  <div id="change0">-£30</div>
+                </div>
+
+                <div class="flex-center-row">
+                    <div id="date1">10/1/17</div>
+                    <div id="name1">Food</div>
+                    <div id="change1">-£30</div>
+                </div>
+
+                <div class="flex-center-row">
+                    <div id="date2">10/1/17</div>
+                    <div id="name2">Food</div>
+                    <div id="change2">-£30</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="demo-separator mdl-cell--1-col"></div>
+            
+            <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
+                <h3>View options</h3>
+                <ul>
+                  <li>
+                    <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">Click per object</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label for="chkbox2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox2" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">Views per object</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label for="chkbox3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox3" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">Objects selected</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label for="chkbox4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                      <input type="checkbox" id="chkbox4" class="mdl-checkbox__input">
+                      <span class="mdl-checkbox__label">Objects viewed</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">Change location</a>
+                <div class="mdl-layout-spacer"></div>
+                <i class="material-icons">location_on</i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transactions page -->
+        <div id="transactions-page">
+          <ul class="mdl-list flex-center-column">
+            <li class="mdl-list__item mdl-card mdl- mdl-color--white mdl-shadow--2dp flex-center-row">
+              <span class="mdl-list__item-primary-content">
+                <div class="mdl-color-text--grey-600">10/1/17</div>
+                <div class="mdl-color-text--grey-600">Hello world</div>
+                <div class="mdl-color-text--grey-600">+ £200</div>
+                <div class="mdl-color-text--grey-600">£412</div>
+              </span>
+            </li>
+            <li class="mdl-list__item mdl-card mdl- mdl-color--white mdl-shadow--2dp flex-center-row">
+              <span class="mdl-list__item-primary-content">
+                <div class="mdl-color-text--grey-600">10/1/17</div>
+                <div class="mdl-color-text--grey-600">Hello world</div>
+                <div class="mdl-color-text--grey-600">+ £200</div>
+                <div class="mdl-color-text--grey-600">£412</div>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </main>
+    </div>
+
+    <!-- Login box -->
+    <div id="login-background">
+      
+      <!-- Login dialog -->
+      <div id="login-container" class="mdl-card">
+        <div class="mdl-card__actions">
+          <form id="login-form" action="/login" method="post">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="user" name="user">
+              <label class="mdl-textfield__label" for="user">User name</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="password" id="pass" name="pass">
+              <label class="mdl-textfield__label" for="pass">Password</label>
+            </div>
+            <input type="submit" value="SIGN IN" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
+      <defs>
+        <mask id="piemask" maskContentUnits="objectBoundingBox">
+          <circle cx=0.5 cy=0.5 r=0.49 fill="white" />
+          <circle cx=0.5 cy=0.5 r=0.40 fill="black" />
+        </mask>
+        <g id="piechart">
+          <circle cx=0.5 cy=0.5 r=0.5 />
+          <path d="M 0.5 0.5 0.5 0 A 0.5 0.5 0 0 1 0.95 0.28 z" stroke="none" fill="rgba(255, 255, 255, 0.75)" />
+        </g>
+      </defs>
+    </svg>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 250" style="position: fixed; left: -1000px; height: -1000px;">
+      <defs>
+
+      </defs>
+    </svg>
+    <script src="graphs.js"></script>
+    <script src="ajax.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
