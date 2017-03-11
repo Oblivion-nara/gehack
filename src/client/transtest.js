@@ -62,12 +62,23 @@ function findRegular(names, changes, balances, dates){
 		var position = 0;
 
 		for(var j = 0;j < tempN.length;j++){
-			
+
 			position = tempN.indexof(tempN[j],position) + 1;
 			tempC.push(changes[position - 1]);
 
 		}
-		var numOfDifferentValues = changes(tempC);
+		var differentValues = changes(tempC);
+		for(var j = 0;j<differentValues.length;j++){
+			var position = 0;
+			temp = tempC.filter(tempC,differentValues[j]);
+			for(var x = 0; x < temp.length;x++){
+				position = Changes.indexof(temp[x],position) + 1;
+				if(position < 0){
+					break;
+				}
+				tempD.push(dates[position - 1]);
+			}
+		}
 		checked.push(names[i]);
 
 	}
@@ -77,8 +88,27 @@ function findRegular(names, changes, balances, dates){
 function names(name){
 	return this.equals(name);
 }
-function changes(change){
-	return this > (change * 9 / 10) and this < (change * 11 / 10) ;
+function change(change){
+	return this > (change * 9 / 10) and this < (change * 11 / 10);
+}
+function changes(changes){
+
+	var difference = [];
+	var count = 0;
+	for(var i = 0;i<changes.length;i++){
+		var different = true;
+		for(var j = 0; i < difference.length;j++){
+			if(changes[i] > (difference[j] * 9 / 10) and changes[i] < (difference[j] * 11 / 10)){
+				different = false;
+				break;
+			}
+		}
+		if(different){
+			count++;
+			difference.push(changes[i]);
+		}
+	}
+	return difference;
 }
 function dates(date){
 
