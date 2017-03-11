@@ -52,6 +52,7 @@ var pass = getParamByName("pass");
 // If there is a user do not show the login
 if (user && pass) {
   byID("login-background").hidden = true;
+  byID("user-name-display").innerText = user;
 }
 
 // Test post
