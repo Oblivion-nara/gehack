@@ -289,16 +289,16 @@
       <!-- Login dialog -->
       <div id="login-container" class="mdl-card">
         <div class="mdl-card__actions">
-          <form id="login-form">
+          <form id="login-form" action="/login" method="post">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="user">
+              <input class="mdl-textfield__input" type="text" id="user" name="user">
               <label class="mdl-textfield__label" for="user">User name</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="password" id="pass">
+              <input class="mdl-textfield__input" type="password" id="pass" name="pass">
               <label class="mdl-textfield__label" for="pass">Password</label>
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">SIGN IN</button>
+            <input type="submit" value="SIGN IN" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
           </form>
         </div>
       </div>
