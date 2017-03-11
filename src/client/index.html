@@ -107,38 +107,11 @@
           </div>
 
           <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-            <div style="height:50%;">
-              <canvas id="myChart" width="400" height="400"></canvas>
+              <canvas id="myChart" width="400" height="200"></canvas>
               <script>
                   var ctx = document.getElementById("myChart");
                   var testData = [101, 59, 80, -90, 56, -30, 40];
-                  var dataColours = [];
-                  for (var i = 0; i < testData.length; i++) {
-                      if (testData[i] < 0) {
-                          dataColours.push("rgba(128,203,196,0.4)");
-                      }
-                      else {
-                          dataColours.push("rgba(255,193,7,0.4)");
-                          console.log("orange");
-                      }
-                  }
 
-
-                  var pointBackgroundColors = [];
-                  var myChart = new Chart(ctx, {
-                      type: 'line',
-                      data: {
-                          datasets: [
-                              {
-                                  data: testData,
-                                  pointBackgroundColor: pointBackgroundColors
-                              }
-                          ]
-                      }
-                  });
-
-
-                  console.log(dataColours);
                   var myChart = new Chart(ctx, {
                       type: 'line',
                       data: {
@@ -166,65 +139,62 @@
                                   spanGaps: false,
                               }
                           ]
+                      },
+                      options: {
+                          title: {
+                              text: 'Balance',
+                              display: true
+                          },
+                          legend: {
+                              display: false
+                          }
                       }
-                      //amber 255, 215, 64
-                      //teal 0, 150, 136
-
                   });
               </script>
-            </div>
-            <!--&lt;!&ndash;<div style="height:50%;">&ndash;&gt;-->
-              <!--<canvas id="myChart1" width="400" height="400"></canvas>-->
-              <!--<script>-->
-                  <!--var ctx = document.getElementById("myChart");-->
-                  <!--var testData = [101, 59, 8, -90, -5, -30, 40];-->
+            <canvas id="myChart1" width="400" height="200"></canvas>
+            <script>
+                var ctx = document.getElementById("myChart1");
+                var testData = [10, 39, 8, -90, -29, -30, 40];
 
-                  <!--var pointBackgroundColors = [];-->
-                  <!--var myChart = new Chart(ctx, {-->
-                      <!--type: 'line',-->
-                      <!--data: {-->
-                          <!--datasets: [-->
-                              <!--{-->
-                                  <!--data: testData,-->
-                                  <!--pointBackgroundColor: pointBackgroundColors-->
-                              <!--}-->
-                          <!--]-->
-                      <!--}-->
-                  <!--});-->
-
-
-                  <!--console.log(dataColours);-->
-                  <!--var myChart = new Chart(ctx, {-->
-                      <!--type: 'line',-->
-                      <!--data: {-->
-                          <!--labels: ["January", "February", "March", "April", "May", "June", "July"],-->
-                          <!--datasets: [-->
-                              <!--{-->
-                                  <!--cubicInterpolationMode: 'monotone',-->
-                                  <!--fill: true,-->
-                                  <!--backgroundColor: "rgba(255,193,7,0.4)",-->
-                                  <!--borderColor: "rgba(0,150,136,1)",-->
-                                  <!--borderCapStyle: 'round',-->
-                                  <!--borderDash: [],-->
-                                  <!--borderDashOffset: 0.0,-->
-                                  <!--borderJoinStyle: 'miter',-->
-                                  <!--pointBorderColor: "rgba(0,150,136,1)",-->
-                                  <!--pointBackgroundColor: "rgba(128,203,196,1)",-->
-                                  <!--pointBorderWidth: 2,-->
-                                  <!--pointHoverRadius: 5,-->
-                                  <!--pointHoverBackgroundColor: "rgba(0,121,107,1)",-->
-                                  <!--pointHoverBorderColor: "rgba(220,220,220,1)",-->
-                                  <!--pointHoverBorderWidth: 2,-->
-                                  <!--pointRadius: 4,-->
-                                  <!--pointHitRadius: 10,-->
-                                  <!--data: testData,-->
-                                  <!--spanGaps: false,-->
-                              <!--}-->
-                          <!--]-->
-                      <!--}-->
-                  <!--});-->
-              <!--</script>-->
-            <!--</div>-->
+                var myChart1 = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ["January", "February", "March", "April", "May", "June", "July"],
+                        datasets: [
+                            {
+                                cubicInterpolationMode: 'monotone',
+                                fill: true,
+                                backgroundColor: "rgba(255,213,79,0.4)",
+                                borderColor: "rgba(255,193,7,1)",
+                                borderCapStyle: 'round',
+                                borderDash: [],
+                                borderDashOffset: 0.0,
+                                borderJoinStyle: 'miter',
+                                pointBorderColor: "rgba(255,193,7,1)",
+                                pointBackgroundColor: "rgba(255,213,79,1)",
+                                pointBorderWidth: 2,
+                                pointHoverRadius: 5,
+                                pointHoverBackgroundColor: "rgba(255,193,7 ,1)",
+                                pointHoverBorderColor: "rgba(220,220,220,1)",
+                                pointHoverBorderWidth: 2,
+                                pointRadius: 4,
+                                pointHitRadius: 10,
+                                data: testData,
+                                spanGaps: false
+                            }
+                        ]
+                    },
+                    options: {
+                        title: {
+                            text: 'Expenditure',
+                            display: true
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                });
+            </script>
           </div>
           <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
             <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
