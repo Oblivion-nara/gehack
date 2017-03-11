@@ -18,3 +18,16 @@ byID("login-form").onsubmit = function() {
   // Stops the normal method of submitting
   return false;
 }
+
+function goHome() {
+  byID("home-page").hidden = false;
+  byID("transactions-page").hidden = true;
+}
+
+function goTransactions() {
+  byID("transactions-page").hidden = false;
+  byID("home-page").hidden = true;
+}
+
+// Start on the home page
+goHome();

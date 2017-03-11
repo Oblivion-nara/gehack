@@ -76,6 +76,7 @@ html, body {
           align-items: center;
   color: rgba(255, 255, 255, 0.56);
   font-weight: 500;
+  cursor: pointer;
 }
 .demo-layout .demo-navigation .mdl-navigation__link:hover {
   background-color: #00BCD4;
@@ -247,7 +248,7 @@ _:-ms-input-placeholder, :root .demo-graph {
 }
 
 #transactions-page {
-  padding: 16px;
+  padding: 8px;
 }
 
 .flex-center-column {
@@ -261,8 +262,13 @@ _:-ms-input-placeholder, :root .demo-graph {
   margin: 0.3rem 0;
 }
 
+#transactions-page > .mdl-list {
+  margin: 0 8px;
+}
+
 #transactions-page > ul > li > span > div{
   margin: 0 1rem;
+  font-weight: 400;
 }
 
 #transactions-page > ul > li > span > :nth-child(2) {
