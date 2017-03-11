@@ -21,12 +21,20 @@ class OBPInterface:
         self.accountID = accountID
 
     def postRequest(self, uri, data):
-        r = request.post("https://apisandbox.openbankproject.com/obp/v2.2.0" + uri, data})
+        r = request.post("https://apisandbox.openbankproject.com/obp/v2.2.0" + uri, data)
 
         return r.json()
 
     def getRequest(self, uri):
-        r = request.get("https://apisandbox.openbankproject.com/obp/v2.2.0" + uri, data = {"Autherization" : "DirectLogin token=\""+self.token+"\""})
+        r = request.get("https://apisandbox.openbankproject.com/obp/v2.2.0" + uri)
+        #r.status_code
+        #r.headers['content-type']
+        #r.encoding
+        #r.text
+        return r.json()
+
+    def getRequest(self, uri, data):
+        r = request.get("https://apisandbox.openbankproject.com/obp/v2.2.0" + uri, data)
         #r.status_code
         #r.headers['content-type']
         #r.encoding
@@ -58,3 +66,7 @@ class OBPInterface:
         if(self.accountID == -1 or self.bankID == -1):
             return None
         return self.getRequest("/my/" + self.bankID + "/rbs/accounts/" + self.accountID + "/transactions")
+
+
+obp = OBPInterface()
+obp.root()
