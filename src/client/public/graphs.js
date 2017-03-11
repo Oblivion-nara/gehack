@@ -1,15 +1,16 @@
 var ctx = document.getElementById("myChart");
-var balance = [0,0];
+var balance = [];
+var balanceDif = [];
 
-function DataPoint(name, value, date) {
-    this.name = name;
+function DataPoint(desc, value, date) {
+    this.desc = desc;
     this.value = value;
     this.date = date;
     if (value < 0) {
-        this.tooltip = name+": -£" + Math.abs(value);
+        this.tooltip = "Total : -£" + Math.abs(value)+"\n"+desc;
     }
     else {
-        this.tooltip = name+": £" + Math.abs(value);
+        this.tooltip = "Total : £" + Math.abs(value)+"\n"+desc;
     }
 }
 

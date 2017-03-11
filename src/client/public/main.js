@@ -58,16 +58,42 @@ if (user && pass) {
 getAjax("/transactionArrays", function(data) {
     data = JSON.parse(data);
     balance = data.balances;
-    balanceDif = data.changes;
-    myChart.data.datasets[0].data = balance;
-    myChart1.data.datasets[0].data = balanceDif;
+
+    var oldDate = null;
+    var desc = "";
     for (var i = 0; i < data.dates.length; i++) {
-        difDataPoints.push(new DataPoint(data.names[i], data.changes[i], data.dates[i]));
+        if (i==0) {
+            balanceDif.push(data.changes[i]);
+            desc+=getDesc(data.names[i], data.changes[i]);
+        }
+        else if (oldDate == data.dates[i] && i != data.dates.length-1) {
+            balanceDif[i] += data.changes[i];
+            desc+=getDesc(data.names[i], data.changes[i]);
+        }
+        else {
+            balanceDif.push(data.changes[i]);
+            difDataPoints.push(new DataPoint(desc, balanceDif[i-1], data.dates[i]));
+            desc = "";
+            oldDate = data.dates[i];
+        }
     }
+    if (data.dates.length == 1) {
+        difDataPoints.push(new DataPoint(desc, balanceDif[0], data.dates[0]));
+    }
+    myChart.data.datasets[0].data = balance;
+    myChart1.data.datasets[0].data = data.changes;
+
     myChart.data.labels = difDataPoints;
     myChart1.data.labels = difDataPoints;
-    console.log(myChart.data.labels);
-    console.log(data.names);
     myChart.update();
     myChart1.update();
 });
+
+function getDesc(name, value) {
+    if (value < 0) {
+        return name+": -£" + Math.abs(value)+"\n";
+    }
+    else {
+        return name+": £" + Math.abs(value)+"\n";
+    }
+}
